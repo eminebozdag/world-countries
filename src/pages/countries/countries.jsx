@@ -1,9 +1,10 @@
 import React from "react";
+import Search from "../../components/search/search";
 import "./countries.css";
 const Countries = () => {
   return (
-    <div>
-      <button>hello</button>
+    <div className="countries-container">
+      <Search />
     </div>
   );
 };
