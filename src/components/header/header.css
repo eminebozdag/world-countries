@@ -2,11 +2,21 @@
 .header-container {
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  position: relative;
+  background: linear-gradient(
+    0.3turn,
+    rgba(255, 255, 255, 0.959),
+    rgba(160, 221, 245, 0.884),
+    rgba(85, 255, 246, 0.493)
+  );
 }
 
 .title-container {
   padding: 20px;
+  position: absolute;
 }
 
 h1 {
@@ -14,12 +24,18 @@ h1 {
   letter-spacing: 5px;
   font-size: 70px;
   margin: 10px;
-  color: #fdb735;
+  background-image: linear-gradient(
+    60deg,
+    rgb(214, 255, 253),
+    rgb(189, 255, 252)
+  );
+  background-clip: text;
+  color: transparent;
 }
 
 h3 {
   font-family: "Urbanist", sans-serif;
   font-size: 30px;
   margin: 10px;
-  color: #6e6e6e;
+  color: rgba(214, 255, 253, 0.945);
 }
