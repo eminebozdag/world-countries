@@ -18,19 +18,19 @@ const Country = (props) => {
       </div>
       <div className="country-info">
         <h2>{name}</h2>
-        <p>
+        <p className="info-p">
           Capital: <span className="info-span">{capital}</span>
         </p>
-        <p>
+        <p className="info-p">
           Language: <span className="info-span">{formattedLanguages}</span>
         </p>
-        <p>
+        <p className="info-p">
           Population:{" "}
           <span className="info-span">
             {population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </span>
         </p>
-        <p>
+        <p className="info-p">
           Currency: <span className="info-span">{formattedCurrencies}</span>
         </p>
       </div>

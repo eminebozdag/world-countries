@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.scroll-button {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+}

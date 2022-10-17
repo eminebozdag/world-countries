@@ -18,7 +18,8 @@
   width: 100%;
 }
 
-.footer-text {
+.footer-text,
+p {
   font-family: "Urbanist", sans-serif;
   color: rgb(233, 255, 251);
   font-size: 14px;
@@ -27,14 +28,4 @@
 span {
   color: rgb(255, 255, 255);
   font-size: 14px;
-}
-
-.scroll-button {
-  height: 40px;
-  width: 40px;
-  border-radius: 20px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 99;
 }
