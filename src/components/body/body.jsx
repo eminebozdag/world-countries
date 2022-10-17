@@ -10,27 +10,27 @@ import "./body.css";
 const Body = () => {
   return (
     <Router>
-      <div className="search-container">
+      <div className="pages-container">
         <div className="links-container-div">
           <div className="links-div">
             <Link to="/countries">
               <img src={searchIcon} alt="search" />
             </Link>
-            <span>search</span>
+            <span className="icon-span">search</span>
           </div>
 
           <div className="links-div">
             <Link to="/languages">
               <img src={langIcon} alt="search" />
             </Link>
-            <span>language</span>
+            <span className="icon-span">language</span>
           </div>
 
           <div className="links-div">
             <Link to="/populations">
               <img src={popIcon} alt="search" />
             </Link>
-            <span>population</span>
+            <span className="icon-span">population</span>
           </div>
         </div>
 
