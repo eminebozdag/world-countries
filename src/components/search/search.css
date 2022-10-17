@@ -7,19 +7,19 @@
 .search-input {
   height: 50px;
   width: 600px;
-  margin: 20px;
+  margin: 40px;
   border-radius: 20px;
   font-size: 25px;
   text-indent: 20px;
   font-family: "Urbanist", sans-serif;
   font-weight: 500;
-  color: rgba(160, 221, 245, 0.884);
-  border: 2px solid rgb(255, 255, 255);
-  box-shadow: rgba(212, 243, 255, 0.493) 0px 2px 30px 2px;
+  color: rgba(129, 210, 241, 0.795);
+  border: 1px solid rgba(233, 248, 255, 0.795);
+  box-shadow: rgba(230, 230, 230, 0.781) 0px 2px 30px 2px;
 }
 
 .search-input::placeholder {
-  color: rgba(160, 221, 245, 0.795);
+  color: rgba(129, 210, 241, 0.795);
   font-family: "Urbanist", sans-serif;
   font-weight: 300;
 }
