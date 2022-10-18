@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import upIcon from "../src/assets/icons/up-arrow.png";
 import "./App.css";
@@ -6,6 +7,7 @@ import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
 function App() {
   const [showButton, setShowButton] = useState(false);
+
   useEffect(() => {
     const handleScrollButtonVisibility = () => {
       window.pageYOffset > 300 ? setShowButton(true) : setShowButton(false);
@@ -17,6 +19,26 @@ function App() {
       window.removeEventListener("scroll", handleScrollButtonVisibility);
     };
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    //setSpinner(true);
+    const API_URL = "https://restcountries.com/v2/all";
+    try {
+      const response = await axios.get(API_URL);
+      const data = await response.data;
+      setItemsToLocaleStorage(data);
+    } catch (error) {
+      console.log(error);
+    }
+    //setSpinner(false);
+  };
+  const setItemsToLocaleStorage = (data) => {
+    localStorage.setItem("items", JSON.stringify(data));
+  };
 
   const handleScrollToTop = () => {
     window.scrollTo({
