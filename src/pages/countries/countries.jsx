@@ -6,6 +6,7 @@ import Country from "./country/country";
 const Countries = () => {
   const [items, setItems] = useState([]);
   const [spinner, setSpinner] = useState(true);
+  const [inputWord, setInputWord] = useState("");
 
   useEffect(() => {
     getItemsFromLocaleStorage();
@@ -19,6 +20,10 @@ const Countries = () => {
     setSpinner(false);
   };
 
+  const handleCallback = (childData) => {
+    setInputWord(childData);
+  };
+
   return (
     <div>
       {spinner ? (
@@ -27,7 +32,8 @@ const Countries = () => {
         </div>
       ) : (
         <div className="countries-search-container">
-          <Search />
+          <Search parentCallback={handleCallback} />
+          <h1>{inputWord}</h1>
           <div className="countries-container">
             {items.map((country) => (
               <Country data={country} key={country.name} />

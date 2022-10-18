@@ -25,7 +25,6 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-    //setSpinner(true);
     const API_URL = "https://restcountries.com/v2/all";
     try {
       const response = await axios.get(API_URL);
@@ -34,8 +33,8 @@ function App() {
     } catch (error) {
       console.log(error);
     }
-    //setSpinner(false);
   };
+
   const setItemsToLocaleStorage = (data) => {
     localStorage.setItem("items", JSON.stringify(data));
   };

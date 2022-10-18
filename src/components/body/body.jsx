@@ -13,7 +13,7 @@ const Body = () => {
       <div className="pages-container">
         <div className="links-container-div">
           <div className="links-div">
-            <Link to="/countries">
+            <Link to="/">
               <img src={searchIcon} alt="search" />
             </Link>
             <span className="icon-span">search</span>
@@ -35,7 +35,7 @@ const Body = () => {
         </div>
 
         <Routes>
-          <Route path="/countries" element={<Countries />} />
+          <Route exact path="/" element={<Countries />} />
           <Route path="/languages" element={<Languages />} />
           <Route path="/populations" element={<Populations />} />
         </Routes>
