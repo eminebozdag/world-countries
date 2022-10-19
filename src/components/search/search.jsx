@@ -1,19 +1,14 @@
 import React from "react";
 import "./search.css";
 
-const Search = (props) => {
-  const handleChange = (e) => {
-    props.parentCallback(e.target.value);
-    console.log(e.target.value);
-  };
-
+const Search = ({ onSearch }) => {
   return (
     <div className="search-container">
       <input
         className="search-input"
         type="text"
         name="searchInput"
-        onChange={handleChange}
+        onChange={(e) => onSearch(e.target.value)}
         placeholder="Search countries by name, city and language"
       />
     </div>

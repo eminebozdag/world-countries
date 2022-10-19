@@ -6,7 +6,7 @@ import Country from "./country/country";
 const Countries = () => {
   const [items, setItems] = useState([]);
   const [spinner, setSpinner] = useState(true);
-  const [inputWord, setInputWord] = useState("");
+  const [filteredItems, setfilteredItems] = useState([]);
 
   useEffect(() => {
     getItemsFromLocaleStorage();
@@ -16,12 +16,17 @@ const Countries = () => {
     const items = JSON.parse(localStorage.getItem("items"));
     if (items) {
       setItems(items);
+      setfilteredItems(items);
     }
     setSpinner(false);
   };
 
-  const handleCallback = (childData) => {
-    setInputWord(childData);
+  const handleSearch = (childData) => {
+    setfilteredItems(childData);
+    let result = items.filter((country) => {
+      return country.name.includes(childData);
+    });
+    setfilteredItems(result);
   };
 
   return (
@@ -32,10 +37,10 @@ const Countries = () => {
         </div>
       ) : (
         <div className="countries-search-container">
-          <Search parentCallback={handleCallback} />
-          <h1>{inputWord}</h1>
+          <Search onSearch={handleSearch} />
+
           <div className="countries-container">
-            {items.map((country) => (
+            {filteredItems.map((country) => (
               <Country data={country} key={country.name} />
             ))}
           </div>
