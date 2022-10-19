@@ -28,7 +28,11 @@ const Countries = () => {
 
   const handleSearch = (searchInput) => {
     let result = items.filter((country) => {
-      return country.name.includes(searchInput);
+      return (
+        country.name.includes(searchInput) ||
+        country.capital?.includes(searchInput) ||
+        country.languages.map((language) => language.name).includes(searchInput)
+      );
     });
     setfilteredItems(result);
   };
