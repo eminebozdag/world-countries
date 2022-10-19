@@ -6,10 +6,14 @@
   width: 350px;
   height: 450px;
   margin-right: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
+
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(204, 237, 250, 0.911) 0px 2px 30px 2px;
+}
+.country-container:last-child {
+  margin-bottom: 40px;
 }
 
 .country-flag {

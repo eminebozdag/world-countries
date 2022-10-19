@@ -26,14 +26,26 @@ const Countries = () => {
     }
   };
 
-  const handleSearch = (searchInput) => {
-    let result = items.filter((country) => {
-      return (
-        country.name.includes(searchInput) ||
-        country.capital?.includes(searchInput) ||
-        country.languages.map((language) => language.name).includes(searchInput)
-      );
-    });
+  const handleSearch = (text) => {
+    const lowerText = text.toLowerCase();
+    // const result = items.filter((country) => {
+    //   return (
+    //     country.name?.toLowerCase().includes(lowerText) ||
+    //     country.capital?.toLowerCase().includes(lowerText) ||
+    //     country.languages.map(
+    //       (language) =>
+    //         language.name.toLowerCase().includes(lowerText).length > 0
+    //     )
+    //   );
+    // });
+    const result = items.filter(
+      (country) =>
+        country.name?.toLowerCase().includes(lowerText) ||
+        country.capital?.toLowerCase().includes(lowerText) ||
+        country.languages.filter((language) =>
+          language.name.toLowerCase().includes(lowerText)
+        ).length > 0
+    );
     setfilteredItems(result);
   };
 
@@ -48,9 +60,16 @@ const Countries = () => {
           <Search onSearch={handleSearch} />
 
           <div className="countries-container">
-            {filteredItems.map((country) => (
-              <Country data={country} key={country.name} />
-            ))}
+            {filteredItems.length > 0 ? (
+              filteredItems.map((country) => (
+                <Country data={country} key={country.name} />
+              ))
+            ) : (
+              <div className="warning-div">
+                <p className="warning-p">Unfortunately, </p>
+                <p className="warning-p">there is no such result.</p>
+              </div>
+            )}
           </div>
         </div>
       )}

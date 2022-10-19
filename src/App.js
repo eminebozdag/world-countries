@@ -25,6 +25,7 @@ function App() {
       behavior: "smooth",
     });
   };
+
   return (
     <div className="App">
       <Header />
