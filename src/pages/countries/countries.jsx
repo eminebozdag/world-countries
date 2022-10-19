@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Loading from "../../components/loading/loading";
 import Search from "../../components/search/search";
@@ -9,22 +10,25 @@ const Countries = () => {
   const [filteredItems, setfilteredItems] = useState([]);
 
   useEffect(() => {
-    getItemsFromLocaleStorage();
+    fetchData();
   }, []);
 
-  const getItemsFromLocaleStorage = () => {
-    const items = JSON.parse(localStorage.getItem("items"));
-    if (items) {
-      setItems(items);
-      setfilteredItems(items);
+  const fetchData = async () => {
+    const API_URL = "https://restcountries.com/v2/all";
+    try {
+      const response = await axios.get(API_URL);
+      const data = await response.data;
+      setItems(data);
+      setfilteredItems(data);
+      setSpinner(false);
+    } catch (error) {
+      console.log(error);
     }
-    setSpinner(false);
   };
 
-  const handleSearch = (childData) => {
-    setfilteredItems(childData);
+  const handleSearch = (searchInput) => {
     let result = items.filter((country) => {
-      return country.name.includes(childData);
+      return country.name.includes(searchInput);
     });
     setfilteredItems(result);
   };

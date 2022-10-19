@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import upIcon from "../src/assets/icons/up-arrow.png";
 import "./App.css";
@@ -19,25 +18,6 @@ function App() {
       window.removeEventListener("scroll", handleScrollButtonVisibility);
     };
   }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = async () => {
-    const API_URL = "https://restcountries.com/v2/all";
-    try {
-      const response = await axios.get(API_URL);
-      const data = await response.data;
-      setItemsToLocaleStorage(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const setItemsToLocaleStorage = (data) => {
-    localStorage.setItem("items", JSON.stringify(data));
-  };
 
   const handleScrollToTop = () => {
     window.scrollTo({
