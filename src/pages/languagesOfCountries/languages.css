@@ -1,0 +1,7 @@
+.languages-container {
+  display: flex;
+  height: 500px;
+  width: 100vw;
+  padding: 50px;
+  justify-content: center;
+}

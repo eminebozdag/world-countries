@@ -28,16 +28,6 @@ const Countries = () => {
 
   const handleSearch = (text) => {
     const lowerText = text.toLowerCase();
-    // const result = items.filter((country) => {
-    //   return (
-    //     country.name?.toLowerCase().includes(lowerText) ||
-    //     country.capital?.toLowerCase().includes(lowerText) ||
-    //     country.languages.map(
-    //       (language) =>
-    //         language.name.toLowerCase().includes(lowerText).length > 0
-    //     )
-    //   );
-    // });
     const result = items.filter(
       (country) =>
         country.name?.toLowerCase().includes(lowerText) ||
@@ -58,7 +48,6 @@ const Countries = () => {
       ) : (
         <div className="countries-search-container">
           <Search onSearch={handleSearch} />
-
           <div className="countries-container">
             {filteredItems.length > 0 ? (
               filteredItems.map((country) => (
