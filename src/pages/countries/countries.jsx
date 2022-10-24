@@ -13,6 +13,10 @@ const Countries = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    init();
+  });
+
   const fetchData = async () => {
     const API_URL = "https://restcountries.com/v2/all";
     try {
@@ -37,6 +41,52 @@ const Countries = () => {
         ).length > 0
     );
     setfilteredItems(result);
+  };
+
+  const getCountryPopution = () => {
+    const countryPopulation = {};
+    items.forEach((country) => {
+      countryPopulation[country.name] = country.population;
+    });
+    return countryPopulation;
+  };
+
+  const getLanguageUsages = () => {
+    const languageUsages = {};
+    items.forEach((country) => {
+      country.languages.forEach((language) => {
+        if (!languageUsages[language.name]) languageUsages[language.name] = 0;
+        languageUsages[language.name]++;
+      });
+    });
+    return languageUsages;
+  };
+
+  const findMostTenUsages = (usages) => {
+    const arr = Object.keys(usages).map((name) => {
+      return {
+        name,
+        count: usages[name],
+      };
+    });
+
+    arr.sort(function (a, b) {
+      if (a.count < b.count) return -1;
+    });
+
+    return arr.reverse().slice(0, 10);
+  };
+
+  const init = () => {
+    const langUsages = getLanguageUsages();
+    const mostTenLangs = findMostTenUsages(langUsages);
+    localStorage.setItem("mostTenLanguages", JSON.stringify(mostTenLangs));
+    const countryPops = getCountryPopution();
+    const mostTenCountries = findMostTenUsages(countryPops);
+    localStorage.setItem(
+      "mostTenPopulations",
+      JSON.stringify(mostTenCountries)
+    );
   };
 
   return (

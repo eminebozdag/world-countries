@@ -7,6 +7,7 @@ import Countries from "../../pages/countries/countries";
 import Languages from "../../pages/languagesOfCountries/languages";
 import Populations from "../../pages/populationsOfCountries/populations";
 import "./body.css";
+
 const Body = () => {
   return (
     <Router>
@@ -33,7 +34,6 @@ const Body = () => {
             <span className="icon-span">population</span>
           </div>
         </div>
-
         <Routes>
           <Route exact path="/" element={<Countries />} />
           <Route path="/languages" element={<Languages />} />
