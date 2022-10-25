@@ -1,9 +1,7 @@
 import { Bar } from "@ant-design/plots";
-import React, { useContext } from "react";
-import { DataContext } from "./bar-context";
-const DemoBar = () => {
-  const { data } = useContext(DataContext);
+import React from "react";
 
+const DemoBar = (data) => {
   const config = {
     data,
     xField: "value",

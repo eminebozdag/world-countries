@@ -1,11 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import upIcon from "../src/assets/icons/up-arrow.png";
 import "./App.css";
 import Body from "./components/body/body";
 import Footer from "./components/footer/footer";
 import Header from "./components/header/header";
+import useFetch from "./hooks/useFetch";
+
+export const CountryItemsContext = createContext();
+
 function App() {
   const [showButton, setShowButton] = useState(false);
+  const { fetchedData, loading, filteredItems, setfilteredItems } = useFetch(
+    "https://restcountries.com/v2/all"
+  );
+  const value = { fetchedData, loading, filteredItems, setfilteredItems };
 
   useEffect(() => {
     const handleScrollButtonVisibility = () => {
@@ -29,7 +37,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Body />
+      <CountryItemsContext.Provider value={value}>
+        <Body />
+      </CountryItemsContext.Provider>
       <Footer />
       {showButton && (
         <input
