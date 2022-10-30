@@ -12,28 +12,6 @@ const Body = () => {
   return (
     <Router>
       <div className="pages-container">
-        <div className="links-container-div">
-          <div className="links-div">
-            <Link to="/">
-              <img src={searchIcon} alt="search" />
-            </Link>
-            <span className="icon-span">search</span>
-          </div>
-
-          <div className="links-div">
-            <Link to="/languages">
-              <img src={langIcon} alt="search" />
-            </Link>
-            <span className="icon-span">language</span>
-          </div>
-
-          <div className="links-div">
-            <Link to="/populations">
-              <img src={popIcon} alt="search" />
-            </Link>
-            <span className="icon-span">population</span>
-          </div>
-        </div>
         <Routes>
           <Route exact path="/" element={<Countries />} />
           <Route path="/languages" element={<Languages />} />

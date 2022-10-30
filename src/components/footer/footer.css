@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@200;700&display=swap");
+
 .footer-container {
   display: flex;
   flex-direction: row;
@@ -18,8 +19,7 @@
   width: 100%;
 }
 
-.footer-text,
-p {
+.footer-text {
   font-family: "Urbanist", sans-serif;
   color: rgb(233, 255, 251);
   font-size: 14px;

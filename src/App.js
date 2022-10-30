@@ -1,56 +1,46 @@
-import React, { createContext, useEffect, useState } from "react";
-import upIcon from "../src/assets/icons/up-arrow.png";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Body from "./components/body/body";
-import Footer from "./components/footer/footer";
-import Header from "./components/header/header";
-import useFetch from "./hooks/useFetch";
-
-export const CountryItemsContext = createContext();
+import CountryContext from "./context/country.context";
+import pages from "./pages/pages.config";
+import CountryService from "./services/countries.service";
 
 function App() {
-  const [showButton, setShowButton] = useState(false);
-  const { fetchedData, loading, filteredItems, setfilteredItems } = useFetch(
-    "https://restcountries.com/v2/all"
-  );
-  const value = { fetchedData, loading, filteredItems, setfilteredItems };
+  const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    const handleScrollButtonVisibility = () => {
-      window.pageYOffset > 300 ? setShowButton(true) : setShowButton(false);
+    const fetcher = async () => {
+      if (countries.length > 0) {
+        return;
+      }
+
+      const service = new CountryService();
+      const allCountries = await service.getAllCountries();
+
+      console.log("fetched!");
+      setCountries(allCountries || []);
     };
 
-    window.addEventListener("scroll", handleScrollButtonVisibility);
-
-    return () => {
-      window.removeEventListener("scroll", handleScrollButtonVisibility);
-    };
+    fetcher();
   }, []);
 
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
-    <div className="App">
-      <Header />
-      <CountryItemsContext.Provider value={value}>
-        <Body />
-      </CountryItemsContext.Provider>
-      <Footer />
-      {showButton && (
-        <input
-          type="image"
-          className="scroll-button"
-          src={upIcon}
-          alt="scroll"
-          onClick={handleScrollToTop}
-        />
-      )}
-    </div>
+    <CountryContext.Provider value={{ countries }}>
+      <BrowserRouter>
+        <Routes>
+          {pages.map((page) => {
+            return (
+              <Route
+                key={page.title}
+                path={page.route}
+                exact={page.exact}
+                element={<page.Component />}
+              />
+            );
+          })}
+        </Routes>
+      </BrowserRouter>
+    </CountryContext.Provider>
   );
 }
 
