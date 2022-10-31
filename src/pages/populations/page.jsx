@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
 import DemoBar from "../../components/bar/demobar";
 import Layout from "../../components/layout";
-import CountryContext from "../../context/country.context";
+import DataContext from "../../context/bar.context";
+import "./page.css";
+
 const PopulationPage = () => {
-  const { countries } = useContext(CountryContext);
+  const { mostTenCountries } = useContext(DataContext);
   return (
     <Layout>
-      Populations {countries.length}
-      <DemoBar />
+      <div className="population-container">
+        <DemoBar
+          data={mostTenCountries.map((lang) => {
+            return { type: lang.name, value: lang.count };
+          })}
+        />
+      </div>
     </Layout>
   );
 };
