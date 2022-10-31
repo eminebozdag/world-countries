@@ -7,6 +7,12 @@
   height: auto;
 }
 
+.countries-current-count {
+  font-size: 24px;
+  font-family: "Urbanist", sans-serif;
+  color: rgba(204, 237, 250, 0.911);
+}
+
 .countries-container {
   display: flex;
   flex-direction: row;
@@ -24,12 +30,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   background-color: #fff;
 }
 
 .warning-p {
-  font-size: 30px;
+  font-size: 24px;
   font-family: "Urbanist", sans-serif;
   font-weight: 500;
   color: rgba(204, 237, 250, 0.911);

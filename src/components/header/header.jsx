@@ -11,12 +11,12 @@ const Header = () => {
       <div className="header-container">
         <div className="title-container">
           <h1>World Countries Data</h1>
-          <h3>Currently, we have 250 countries</h3>
+          <h3>Search Between Countries </h3>
         </div>
       </div>
       <div className="links-container-div">
         <div className="links-div">
-          <Link to="/home">
+          <Link to="/">
             <img src={searchIcon} alt="search" />
           </Link>
           <span className="icon-span">search</span>

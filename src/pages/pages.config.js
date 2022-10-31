@@ -1,13 +1,13 @@
-import HomePage from "./home/page";
+import Countries from "./countries/page";
 import LanguagePage from "./languages/page";
 import PopulationPage from "./populations/page";
 
 const pages = [
   {
     title: "Home",
-    route: "/home",
+    route: "/",
     exact: true,
-    Component: HomePage,
+    Component: Countries,
   },
   {
     title: "Languages",
