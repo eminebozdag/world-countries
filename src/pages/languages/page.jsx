@@ -1,17 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import DemoBar from "../../components/bar/demobar";
 import Layout from "../../components/layout";
-import DataContext from "../../context/bar.context";
+import CountryContext from "../../context/country.context";
 import "./page.css";
 
 const LanguagePage = () => {
-  const { mostTenLangs } = useContext(DataContext);
+  const { countries } = useContext(CountryContext);
+  const [languages, setLanguages] = useState([]);
+
+  useEffect(() => {
+    const getMostTenLanguagesAndUsages = () => {
+      const languageaAndUsages = {};
+
+      countries.forEach((country) => {
+        country.languages.forEach((language) => {
+          if (!languageaAndUsages[language.name])
+            languageaAndUsages[language.name] = 0;
+          languageaAndUsages[language.name]++;
+        });
+      });
+
+      const langArr = Object.keys(languageaAndUsages).map((name) => {
+        return {
+          name,
+          count: languageaAndUsages[name],
+        };
+      });
+
+      langArr.sort(function (a, b) {
+        if (a.count < b.count) return -1;
+      });
+
+      const result = langArr.reverse().slice(0, 10);
+      setLanguages(result);
+    };
+
+    getMostTenLanguagesAndUsages();
+  }, [countries]);
 
   return (
     <Layout>
       <div className="languages-container">
         <DemoBar
-          data={mostTenLangs.map((lang) => {
+          data={languages.map((lang) => {
             return { type: lang.name, value: lang.count };
           })}
         />
