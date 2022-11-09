@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;500&display=swap");
 .country-container {
   display: flex;
   flex-direction: column;
@@ -11,6 +10,7 @@
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(204, 237, 250, 0.911) 0px 2px 30px 2px;
 }
+
 .country-container:last-child {
   margin-bottom: 40px;
 }
@@ -37,6 +37,7 @@
   overflow: scroll;
   text-align: left;
 }
+
 .country-info-name {
   height: 52px;
   overflow: hidden;
