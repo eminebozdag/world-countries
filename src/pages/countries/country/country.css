@@ -34,14 +34,12 @@
 .country-info {
   width: 300px;
   height: 230px;
-  text-align: left;
   overflow: scroll;
+  text-align: left;
 }
 .country-info-name {
   height: 52px;
-
   overflow: hidden;
-  text-overflow: ellipsis;
   font-family: "Urbanist", sans-serif;
   color: rgb(22, 85, 104);
   text-align: center;
