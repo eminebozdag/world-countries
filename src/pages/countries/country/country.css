@@ -7,7 +7,6 @@
   height: 450px;
   margin-right: 40px;
   margin-top: 40px;
-
   border-radius: 10px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(204, 237, 250, 0.911) 0px 2px 30px 2px;
@@ -35,12 +34,14 @@
 .country-info {
   width: 300px;
   height: 230px;
-
   text-align: left;
+  overflow: scroll;
 }
+.country-info-name {
+  height: 52px;
 
-h2 {
-  height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-family: "Urbanist", sans-serif;
   color: rgb(22, 85, 104);
   text-align: center;

@@ -17,7 +17,7 @@ const Country = (props) => {
         <img src={flag} alt="flag" className="flag-img" />
       </div>
       <div className="country-info">
-        <h2>{name}</h2>
+        <h2 className="country-info-name">{name}</h2>
         <p className="info-p">
           Capital: <span className="info-span">{capital}</span>
         </p>

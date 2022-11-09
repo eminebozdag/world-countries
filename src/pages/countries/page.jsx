@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import Search from "../../components/search/search";
+import Spinner from "../../components/spinner/spinner";
 import CountryContext from "../../context/country.context";
 import Country from "./country/country";
 import "./page.css";
@@ -34,23 +35,28 @@ const Countries = () => {
 
   return (
     <Layout>
-      <div className="countries-search-container">
-        <Search onSearch={handleSearch} />
-        <p className="countries-current-count">
-          Currently, we have {filteredItems.length} countries!
-        </p>
-        <div className="countries-container">
-          {filteredItems.length > 0 ? (
-            filteredItems.map((country) => (
-              <Country data={country} key={country.name} />
-            ))
-          ) : (
-            <div className="warning-div">
-              <p className="warning-p">Try Again!</p>
-            </div>
-          )}
+      {countries.length ? (
+        <div className="countries-search-container">
+          <Search onSearch={handleSearch} />
+          <p className="countries-current-count">
+            Currently, we have {filteredItems.length}{" "}
+            {filteredItems.length > 1 ? "countries" : "country"}!
+          </p>
+          <div className="countries-container">
+            {filteredItems.length > 0 ? (
+              filteredItems.map((country) => (
+                <Country data={country} key={country.name} />
+              ))
+            ) : (
+              <div className="warning-div">
+                <p className="warning-p">Try Again!</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <Spinner />
+      )}
     </Layout>
   );
 };

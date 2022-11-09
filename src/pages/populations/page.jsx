@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import DemoBar from "../../components/bar/demobar";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import CountryContext from "../../context/country.context";
 import "./page.css";
 

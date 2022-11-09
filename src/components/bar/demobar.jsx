@@ -7,14 +7,14 @@ const DemoBar = ({ data }) => {
     xField: "value",
     yField: "type",
     seriesField: "type",
-    color: "rgb(138, 255, 220)",
-    legend: false,
+    color: "rgb(51, 255, 189)",
+    legend: true,
     meta: {
       type: {
-        alias: "类别",
+        alias: "title",
       },
       value: {
-        alias: "销售额",
+        alias: "rate",
       },
     },
   };
